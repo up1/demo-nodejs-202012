@@ -1,16 +1,16 @@
 const express = require("express");
 const app = express();
 
-const userGateway = require("./userGateway");
+const userService = require("./userService");
 
 app.get("/users", (req, res) => {
-  userGateway.getData().then((response) => {
+  userService.inquiryUser().then((response) => {
     res.send(response);
   });
 });
 
 app.get("/users/1", async (req, res) => {
-  const response = await userGateway.getUser();
+  const response = await userService.inquiryUser();
   res.send(response);
 });
 
